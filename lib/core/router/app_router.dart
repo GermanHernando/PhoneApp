@@ -9,7 +9,7 @@ final GoRouter appRouter = GoRouter(
   initialLocation: '/login',
   routes:[
     GoRoute(path: '/login', builder:(context, state) => const LoginScreen(),),
-    GoRoute(path: '/phones', builder: (context, state) => const PhonesScreen(),),
+    GoRoute(path: '/phones', builder: (context, state) => PhonesScreen(),),
     GoRoute(path: '/phones_detail', builder: (context, state) => const PhonesDetailScreen(),)
   ] 
   );
