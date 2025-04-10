@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:practica2/data/registered_users.dart';
 import 'package:practica2/domain/user_models.dart';
 
 
@@ -16,15 +17,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   String? errorMessage;
-
-  // Lista de usuarios registrados
-  List<User> users = [
-    User('Juan Pérez', 'juan@example.com', '12345'),
-    User('Ana Gómez', 'ana@example.com', 'password123'),
-    User('Luis Martínez', 'luis@example.com', 'qwerty'),
-    User('Marta Fernández', 'marta@example.com', 'abc123'),
-    User('Carlos Sánchez', 'carlos@example.com', '98765'),
-  ];
 
   // Expresión regular para validar un email
   bool isValidEmail(String email) {
@@ -43,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       // Buscar al usuario que coincida con el correo y la contraseña
       User? loggedInUser;
-      for (var user in users) {
+      for (var user in usersRegistered) {
         if (user.email == emailController.text && user.password == passwordController.text) {
           loggedInUser = user;
           break;
