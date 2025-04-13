@@ -15,7 +15,7 @@ Phone(
   title: "iPhone 15 Pro Max",
   brand: "Apple",
   year: 2023,
-  posterUrl: 'https://nextgames.com.ar/img/Public/1040/54460-producto-iphone-15-pro-7c1ab5497a07442f3a16968118854095-1024-1024.jpeg'//FIXME
+  posterUrl: 'https://nextgames.com.ar/img/Public/1040/54460-producto-iphone-15-pro-7c1ab5497a07442f3a16968118854095-1024-1024.jpeg'
 ),
 Phone(
   id:'3',

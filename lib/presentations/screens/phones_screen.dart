@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:practica2/data/phone_repository.dart';
 import 'package:practica2/domain/phone.dart';
 
@@ -53,25 +54,29 @@ class _PhoneItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: phone.posterUrl != null
-        ? ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              phone.posterUrl!,
+    return GestureDetector(
+      onTap: () => context.push('/phones_detail/${phone.id}'),
+      child: Card(
+        child: ListTile(
+          trailing: const Icon(Icons.arrow_forward_ios),
+          leading: phone.posterUrl != null
+          ? ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                phone.posterUrl!,
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
+            )
+          : const SizedBox(
               width: 50,
               height: 50,
-              fit: BoxFit.cover,
+              child: Icon(Icons.phone_android),
             ),
-          )
-        : const SizedBox(
-            width: 50,
-            height: 50,
-            child: Icon(Icons.phone_android),
-          ),
-      title: Text(phone.title),
-      subtitle:Text(phone.brand),),
+        title: Text(phone.title),
+        subtitle:Text(phone.brand),),
+      ),
     );
 
   }
