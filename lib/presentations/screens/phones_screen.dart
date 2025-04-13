@@ -25,7 +25,7 @@ class PhonesScreen extends StatelessWidget {
 
 class _PhonesListView extends StatelessWidget {
   const _PhonesListView({
-    super.key,
+    //super.key,
     required this.phones,
   });
 
@@ -34,11 +34,45 @@ class _PhonesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(itemCount: phones.length,itemBuilder: (context, index){
-      return Text('Item $phones.length'); //Minuto 27:16
+      return _PhoneItemView(phone: phones[index]); 
     }
 
 
 
     );
+  }
+}
+
+class _PhoneItemView extends StatelessWidget {
+  const _PhoneItemView({
+    //super.key,
+    required this.phone,
+  });
+
+  final Phone phone;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        leading: phone.posterUrl != null
+        ? ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              phone.posterUrl!,
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
+          )
+        : const SizedBox(
+            width: 50,
+            height: 50,
+            child: Icon(Icons.phone_android),
+          ),
+      title: Text(phone.title),
+      subtitle:Text(phone.brand),),
+    );
+
   }
 }
